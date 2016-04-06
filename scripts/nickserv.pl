@@ -389,7 +389,7 @@ sub nickserv_notice {
     my ($target, $text) = $data =~ /^(\S*)\s:(.*)/;
 
     if (is_nickserv($server->{tag}, $address)) {
-        if ($text =~ /^If this is your nickname, type \/msg NickServ/ || $text =~ /^This nickname is registered and protected.  If it is your/ || $text =~ /This nickname is registered\. Please choose a different nickname,/ || $text =~ /^This nickname is registered. Please choose a different nickname/) {
+        if ($text =~ /^(?:If this is your nickname, type|Please identify via) \/msg NickServ/ || $text =~ /^This nickname is registered and protected.  If it is your/ || $text =~ /This nickname is registered\. Please choose a different nickname,/ || $text =~ /^This nickname is registered. Please choose a different nickname/) {
             my $password = get_password($server->{tag}, $server->{nick});
             
             if ($password == -1) {
